@@ -1,8 +1,7 @@
 package com.ziola.alan.clients
 
 import com.ziola.alan.dtos.swapi.PeopleSwapiDto
-import com.ziola.alan.dtos.swapi.StarshipSwapiDto
-import com.ziola.alan.exceptions.StarshipNotFoundException
+import com.ziola.alan.dtos.swapi.StarshipsSwapiDto
 import org.springframework.stereotype.Service
 import org.springframework.web.client.RestClient
 
@@ -18,11 +17,11 @@ class SwapiClient(
             .body(PeopleSwapiDto::class.java)
     }
 
-    fun getStarship(url: String): StarshipSwapiDto {
+    fun getStarshipsFromPage(page: Int): StarshipsSwapiDto? {
         return client
             .get()
-            .uri(url)
+            .uri("starships?page=$page")
             .retrieve()
-            .body(StarshipSwapiDto::class.java) ?: throw StarshipNotFoundException("Starship has not been found")
+            .body(StarshipsSwapiDto::class.java)
     }
 }

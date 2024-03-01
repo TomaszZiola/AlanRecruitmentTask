@@ -16,11 +16,11 @@ class StarshipController(
     fun getStarshipsByName(
         @PathVariable name: String,
     ): Starships {
-        return starshipService.findPeopleByName(name)
+        return starshipService.findStarshipsByName(name)
     }
 
     @GetMapping
     fun getStarships(): Starships {
-        return starshipService.findPeople()
+        return starshipService.findStarships()
     }
 }

@@ -1,8 +1,6 @@
-CREATE SEQUENCE public.person_sq INCREMENT 1 START WITH 1 MINVALUE 1;
-
 CREATE TABLE person
 (
-    id         BIGINT,
+    id         INT,
     name       VARCHAR(255) NOT NULL,
     height     VARCHAR(255) NOT NULL,
     mass       VARCHAR(255) NOT NULL,

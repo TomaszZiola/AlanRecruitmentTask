@@ -6,18 +6,18 @@ import org.junit.jupiter.api.Test
 
 internal class StarshipServiceTest : BaseUnitTest() {
     @Test
-    fun `StarshipService#findAllByName should return list of StarshipWithPersonDto`() {
+    fun `StarshipService#findStarshipsByName should return list of StarshipWithPersonDto`() {
         // when
-        val result = starshipServiceImpl.findPeopleByName("X-wing")
+        val result = starshipServiceImpl.findStarshipsByName("X-wing")
 
         // then
         assertThat(result).isEqualTo(starships)
     }
 
     @Test
-    fun `StarshipService#findAll should return list of StarshipWithPersonDto`() {
+    fun `StarshipService#findStarships should return list of StarshipWithPersonDto`() {
         // when
-        val result = starshipServiceImpl.findPeople()
+        val result = starshipServiceImpl.findStarships()
 
         // then
         assertThat(result).isEqualTo(starships)

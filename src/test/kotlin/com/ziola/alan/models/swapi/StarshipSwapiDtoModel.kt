@@ -21,6 +21,11 @@ internal object StarshipSwapiDtoModel {
             created = "2014-12-12T11:19:05.340000Z",
             edited = "2014-12-20T21:23:49.886000Z",
             url = "https://swapi.dev/api/starships/12/",
+            pilots =
+                listOf(
+                    "https://swapi.dev/api/people/1/",
+                    "https://swapi.dev/api/people/9/",
+                ),
         )
     }
 }

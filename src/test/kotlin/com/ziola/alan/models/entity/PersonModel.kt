@@ -9,6 +9,7 @@ internal object PersonModel {
     fun basic(): Person {
         val person =
             Person(
+                id = 1L,
                 name = "Luke Skywalker",
                 height = "172",
                 mass = "77",
@@ -20,7 +21,7 @@ internal object PersonModel {
                 created = of(2014, 12, 9, 13, 50, 51, 644000, of("UTC")),
                 edited = of(2014, 12, 20, 21, 17, 56, 891000, of("UTC")),
             )
-        person.addStarships(listOf(StarshipModel.basic(person)))
+        person.addStarships(listOf(StarshipModel.basic(listOf(person))))
         return person
     }
 
@@ -43,7 +44,6 @@ internal object PersonModel {
                     starshipClass = it.starshipClass,
                     created = it.created,
                     edited = it.edited,
-                    person = this,
                 )
             this.starships.add(starshipEntity)
         }

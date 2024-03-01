@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test
 @WireMockTest(httpPort = 8081)
 internal class IntegrationTest : BaseEndToEndTest() {
     @Test
-    fun `Application on startup should save to database People received from client`() {
+    fun `Application on startup should save to database People and Starships received from client`() {
         assertThat(personRepository.findAll().size).isEqualTo(3)
         assertThat(starshipRepository.findAll().size).isEqualTo(3)
     }
@@ -40,7 +40,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                     starships =
                                         listOf(
                                             basicStarshipResponse(),
-                                            basicStarshipResponse(name = "Imperial shuttle"),
+                                            basicStarshipResponse(name = "Slave 1"),
                                         ),
                                 ),
                                 basicPeopleResponse(
@@ -50,7 +50,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                     name = "Darth Vader",
                                     starships =
                                         listOf(
-                                            basicStarshipResponse(name = "TIE Advanced x1"),
+                                            basicStarshipResponse(name = "Slave 1"),
                                         ),
                                 ),
                             ]
@@ -79,7 +79,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                     starships =
                                         listOf(
                                             basicStarshipResponse(),
-                                            basicStarshipResponse(name = "Imperial shuttle"),
+                                            basicStarshipResponse(name = "Slave 1"),
                                         ),
                                 ),
                             ]
@@ -105,16 +105,19 @@ internal class IntegrationTest : BaseEndToEndTest() {
                         "starships" to
                             arr[
                                 basicStarshipResponse(
-                                    person = basicPeopleResponse(),
+                                    people = listOf(basicPeopleResponse()),
                                 ),
-                                basicStarshipResponse(name = "Imperial shuttle", person = basicPeopleResponse()),
                                 basicStarshipResponse(
-                                    name = "TIE Advanced x1",
-                                    person =
-                                        basicPeopleResponse(
-                                            name = "Darth Vader",
+                                    name = "Slave 1",
+                                    people =
+                                        listOf(
+                                            basicPeopleResponse(),
+                                            basicPeopleResponse(
+                                                name = "Darth Vader",
+                                            ),
                                         ),
                                 ),
+                                basicStarshipResponse(name = "Star Destroyer"),
                             ]
                     },
                 classType = Starships::class.java,
@@ -138,7 +141,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                         "starships" to
                             arr[
                                 basicStarshipResponse(
-                                    person = basicPeopleResponse(),
+                                    people = listOf(basicPeopleResponse()),
                                 ),
                             ]
                     },

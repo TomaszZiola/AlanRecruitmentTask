@@ -22,7 +22,7 @@ internal object StarshipWithPersonDtoModel {
             starshipClass = "Starfighter",
             created = of(2014, 12, 12, 11, 19, 5, 340000, of("UTC")),
             edited = of(2014, 12, 20, 21, 23, 49, 886000, of("UTC")),
-            person = PersonDtoModel.basic(),
+            person = listOf(PersonDtoModel.basic()),
         )
     }
 }

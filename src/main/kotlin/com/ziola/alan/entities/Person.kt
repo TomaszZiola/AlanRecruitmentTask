@@ -1,15 +1,14 @@
 package com.ziola.alan.entities
 
 import com.ziola.alan.entities.base.BaseEntity
+import jakarta.persistence.CascadeType.MERGE
 import jakarta.persistence.CascadeType.PERSIST
-import jakarta.persistence.CascadeType.REMOVE
 import jakarta.persistence.Entity
 import jakarta.persistence.FetchType.EAGER
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType.SEQUENCE
 import jakarta.persistence.Id
-import jakarta.persistence.OneToMany
-import jakarta.persistence.SequenceGenerator
+import jakarta.persistence.JoinColumn
+import jakarta.persistence.JoinTable
+import jakarta.persistence.ManyToMany
 import jakarta.persistence.Table
 import java.time.ZonedDateTime
 
@@ -17,6 +16,8 @@ import java.time.ZonedDateTime
 @Table(name = "person")
 @Suppress("LongParameterList")
 class Person(
+    @Id
+    override var id: Long?,
     val name: String,
     val height: String,
     val mass: String,
@@ -28,18 +29,9 @@ class Person(
     val created: ZonedDateTime,
     val edited: ZonedDateTime,
 ) : BaseEntity<Long>() {
-    @Id
-    @SequenceGenerator(name = "person_sq", sequenceName = "person_sq", allocationSize = 1)
-    @GeneratedValue(strategy = SEQUENCE, generator = "person_sq")
-    override var id: Long? = null
-
-    @OneToMany(mappedBy = "person", fetch = EAGER, cascade = [PERSIST, REMOVE], orphanRemoval = true)
-    val starships: MutableList<Starship> = mutableListOf()
-
-    fun addStarship(starship: Starship) {
-        starships.add(starship)
-        starship.person = this
-    }
+    @ManyToMany(cascade = [PERSIST, MERGE], fetch = EAGER)
+    @JoinTable(name = "person_starship", joinColumns = [JoinColumn(name = "person_id")], inverseJoinColumns = [JoinColumn(name = "starship_id")])
+    val starships: MutableSet<Starship> = mutableSetOf()
 
     override fun toString(): String {
         return "Person(name='$name', height='$height', mass='$mass', hairColor='$hairColor', skinColor='$skinColor', " +

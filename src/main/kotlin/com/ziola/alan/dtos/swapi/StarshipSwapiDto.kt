@@ -25,4 +25,5 @@ data class StarshipSwapiDto(
     val created: String,
     val edited: String,
     val url: String,
+    val pilots: List<String>,
 )

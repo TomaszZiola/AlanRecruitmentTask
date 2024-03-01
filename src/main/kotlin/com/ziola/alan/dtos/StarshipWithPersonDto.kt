@@ -18,5 +18,5 @@ data class StarshipWithPersonDto(
     val starshipClass: String,
     val created: ZonedDateTime,
     val edited: ZonedDateTime,
-    val person: PersonDto,
+    val person: List<PersonDto>,
 )

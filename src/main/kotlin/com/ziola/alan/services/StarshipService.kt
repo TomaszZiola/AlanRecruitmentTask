@@ -10,12 +10,12 @@ class StarshipService(
     private val starshipMapper: StarshipMapper,
     private val starshipRepository: StarshipRepository,
 ) {
-    fun findPeopleByName(name: String): Starships {
+    fun findStarshipsByName(name: String): Starships {
         return starshipRepository.findAllByName(name)
             .let { starshipMapper.toDto(it) }
     }
 
-    fun findPeople(): Starships {
+    fun findStarships(): Starships {
         return starshipRepository.findAll()
             .let { starshipMapper.toDto(it) }
     }

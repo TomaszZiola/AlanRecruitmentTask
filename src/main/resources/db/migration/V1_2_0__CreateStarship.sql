@@ -1,8 +1,6 @@
-CREATE SEQUENCE public.starship_sq INCREMENT 1 START WITH 1 MINVALUE 1;
-
 CREATE TABLE starship
 (
-    id                     BIGINT,
+    id                     INT,
     name                   VARCHAR(255) NOT NULL,
     model                  VARCHAR(255) NOT NULL,
     manufacturer           VARCHAR(255) NOT NULL,
@@ -18,7 +16,5 @@ CREATE TABLE starship
     starship_class         VARCHAR(255),
     created                TIMESTAMP    NOT NULL,
     edited                 TIMESTAMP    NOT NULL,
-    person_id              BIGINT,
-    PRIMARY KEY (id),
-    FOREIGN KEY (person_id) REFERENCES person (id)
+    PRIMARY KEY (id)
 );

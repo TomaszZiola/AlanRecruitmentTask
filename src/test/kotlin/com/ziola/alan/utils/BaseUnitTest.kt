@@ -1,6 +1,5 @@
 package com.ziola.alan.utils
 
-import com.ziola.alan.clients.SwapiClient
 import com.ziola.alan.controllers.PersonController
 import com.ziola.alan.controllers.StarshipController
 import com.ziola.alan.dtos.People
@@ -30,7 +29,6 @@ import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
 
 abstract class BaseUnitTest {
-    private var client = mockk<SwapiClient>()
     private var personMapper = mockk<PersonMapper>()
     private var personRepository = mockk<PersonRepository>()
     private var personService = mockk<PersonService>()
@@ -60,14 +58,14 @@ abstract class BaseUnitTest {
         person = PersonModel.basic()
         personSwapiDto = PersonSwapiDtoModel.baisc()
         personWithStarshipDto = PersonWithStarshipDtoModel.basic()
-        starship = StarshipModel.basic(person)
+        starship = StarshipModel.basic(listOf(person))
         starships = StarshipsModel.basic()
         starshipSwapiDto = StarshipSwapiDtoModel.basic()
         starshipWithPersonDto = StarshipWithPersonDtoModel.basic()
 
         personControllerImpl = PersonController(personService)
         personMapperImpl = PersonMapper()
-        personServiceImpl = PersonService(client, personMapper, personRepository)
+        personServiceImpl = PersonService(personMapper, personRepository)
         starshipControllerImpl = StarshipController(starshipService)
         starshipMapperImpl = StarshipMapper()
         starshipServiceImpl = StarshipService(starshipMapper, starshipRepository)
@@ -80,7 +78,7 @@ abstract class BaseUnitTest {
         every { starshipMapper.toDto(listOf(starship)) } returns starships
         every { starshipRepository.findAllByName("X-wing") } returns listOf(starship)
         every { starshipRepository.findAll() } returns listOf(starship)
-        every { starshipService.findPeople() } returns starships
-        every { starshipService.findPeopleByName("X-wing") } returns starships
+        every { starshipService.findStarships() } returns starships
+        every { starshipService.findStarshipsByName("X-wing") } returns starships
     }
 }

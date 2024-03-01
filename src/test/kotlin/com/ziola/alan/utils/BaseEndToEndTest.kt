@@ -10,9 +10,6 @@ import io.restassured.response.ResponseBodyExtractionOptions
 import org.assertj.core.api.Assertions.assertThat
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.web.server.LocalServerPort
-import java.time.ZoneId.of
-import java.time.ZonedDateTime
-import java.time.ZonedDateTime.of
 
 internal abstract class BaseEndToEndTest : BaseIntegrationTest() {
     @Autowired
@@ -85,9 +82,9 @@ internal abstract class BaseEndToEndTest : BaseIntegrationTest() {
         hyperdriveRating: String = "1.0",
         mglt: String = "100",
         starshipClass: String = "Starfighter",
-        created: ZonedDateTime = of(2014, 12, 12, 11, 19, 5, 340000000, of("UTC")),
-        edited: ZonedDateTime = of(2014, 12, 20, 21, 23, 49, 886000000, of("UTC")),
-        person: ObjectType? = null,
+        created: String = "2014-12-12T11:19:05.340000Z",
+        edited: String = "2014-12-20T21:23:49.886000Z",
+        people: List<ObjectType> = emptyList(),
     ): ObjectType {
         return obj {
             "name" to name
@@ -105,7 +102,7 @@ internal abstract class BaseEndToEndTest : BaseIntegrationTest() {
             "starshipClass" to starshipClass
             "created" to created
             "edited" to edited
-            "person" to person
+            "person" to arr[people]
         }
     }
 }
