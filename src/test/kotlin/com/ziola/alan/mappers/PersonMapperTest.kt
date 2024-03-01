@@ -15,7 +15,7 @@ internal class PersonMapperTest : BaseUnitTest() {
     }
 
     @Test
-    fun `PersonMapper#toDto should map Person to PersonWithStarshipDto`() {
+    fun `PersonMapper#toDto should map Person to PeopleDto`() {
         // when
         val result = personMapperImpl.toDto(listOf(person))
 

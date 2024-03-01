@@ -15,7 +15,7 @@ class StarshipMapperTest : BaseUnitTest() {
     }
 
     @Test
-    fun `StarshipMapper#toDto should map Starship to StarshipWithPersonDto`() {
+    fun `StarshipMapper#toDto should map Starship to StarshipsDto`() {
         // when
         val result = starshipMapperImpl.toDto(listOf(starship))
 
