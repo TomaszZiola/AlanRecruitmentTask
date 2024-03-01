@@ -3,8 +3,8 @@ package com.ziola.alan.integration
 import com.github.tomakehurst.wiremock.junit5.WireMockTest
 import com.lectra.koson.arr
 import com.lectra.koson.obj
-import com.ziola.alan.dtos.People
-import com.ziola.alan.dtos.Starships
+import com.ziola.alan.dtos.PeopleDto
+import com.ziola.alan.dtos.StarshipsDto
 import com.ziola.alan.utils.BaseEndToEndTest
 import io.restassured.module.kotlin.extensions.Extract
 import io.restassured.module.kotlin.extensions.Given
@@ -22,7 +22,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
     }
 
     @Test
-    fun `GET#should return People`() {
+    fun `GET#should return PeopleDto`() {
         Given {
             port(port)
         } When {
@@ -55,13 +55,13 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                 ),
                             ]
                     },
-                classType = People::class.java,
+                classType = PeopleDto::class.java,
             )
         }
     }
 
     @Test
-    fun `GET#should return People filtered by name`() {
+    fun `GET#should return PeopleDto filtered by name`() {
         Given {
             port(port)
         } When {
@@ -84,13 +84,13 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                 ),
                             ]
                     },
-                classType = People::class.java,
+                classType = PeopleDto::class.java,
             )
         }
     }
 
     @Test
-    fun `GET#should return Starships`() {
+    fun `GET#should return StarshipsDto`() {
         Given {
             port(port)
         } When {
@@ -120,13 +120,13 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                 basicStarshipResponse(name = "Star Destroyer"),
                             ]
                     },
-                classType = Starships::class.java,
+                classType = StarshipsDto::class.java,
             )
         }
     }
 
     @Test
-    fun `GET#should return Starships filtered by name`() {
+    fun `GET#should return StarshipsDto filtered by name`() {
         Given {
             port(port)
         } When {
@@ -145,7 +145,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                 ),
                             ]
                     },
-                classType = Starships::class.java,
+                classType = StarshipsDto::class.java,
             )
         }
     }

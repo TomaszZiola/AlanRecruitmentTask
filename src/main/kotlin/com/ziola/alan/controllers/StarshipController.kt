@@ -1,6 +1,6 @@
 package com.ziola.alan.controllers
 
-import com.ziola.alan.dtos.Starships
+import com.ziola.alan.dtos.StarshipsDto
 import com.ziola.alan.services.StarshipService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,12 +15,12 @@ class StarshipController(
     @GetMapping("/{name}")
     fun getStarshipsByName(
         @PathVariable name: String,
-    ): Starships {
+    ): StarshipsDto {
         return starshipService.findStarshipsByName(name)
     }
 
     @GetMapping
-    fun getStarships(): Starships {
+    fun getStarships(): StarshipsDto {
         return starshipService.findStarships()
     }
 }

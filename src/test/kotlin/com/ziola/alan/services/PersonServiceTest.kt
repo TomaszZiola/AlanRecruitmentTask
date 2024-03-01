@@ -6,20 +6,20 @@ import org.junit.jupiter.api.Test
 
 internal class PersonServiceTest : BaseUnitTest() {
     @Test
-    fun `PersonService#findPeopleByName should return list of PersonWithStarshipDto`() {
+    fun `PersonService#findPeopleByName should return PeopleDto`() {
         // when
         val result = personServiceImpl.findPeopleByName("Luke Skywalker")
 
         // then
-        assertThat(result).isEqualTo(people)
+        assertThat(result).isEqualTo(peopleDto)
     }
 
     @Test
-    fun `PersonService#findPeople should return list of PersonWithStarshipDto`() {
+    fun `PersonService#findPeople should return PeopleDto`() {
         // when
         val result = personServiceImpl.findPeople()
 
         // then
-        assertThat(result).isEqualTo(people)
+        assertThat(result).isEqualTo(peopleDto)
     }
 }

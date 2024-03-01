@@ -20,6 +20,6 @@ internal class PersonMapperTest : BaseUnitTest() {
         val result = personMapperImpl.toDto(listOf(person))
 
         // then
-        assertThat(result).isEqualTo(people)
+        assertThat(result).isEqualTo(peopleDto)
     }
 }

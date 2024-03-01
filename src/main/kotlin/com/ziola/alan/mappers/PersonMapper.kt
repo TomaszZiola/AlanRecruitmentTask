@@ -1,6 +1,6 @@
 package com.ziola.alan.mappers
 
-import com.ziola.alan.dtos.People
+import com.ziola.alan.dtos.PeopleDto
 import com.ziola.alan.dtos.PersonWithStarshipDto
 import com.ziola.alan.dtos.StarshipDto
 import com.ziola.alan.dtos.swapi.PersonSwapiDto
@@ -30,8 +30,8 @@ class PersonMapper {
         )
     }
 
-    fun toDto(person: List<Person>): People {
-        return People(
+    fun toDto(person: List<Person>): PeopleDto {
+        return PeopleDto(
             person.map {
                 PersonWithStarshipDto(
                     name = it.name,

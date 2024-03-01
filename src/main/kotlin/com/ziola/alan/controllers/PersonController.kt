@@ -1,6 +1,6 @@
 package com.ziola.alan.controllers
 
-import com.ziola.alan.dtos.People
+import com.ziola.alan.dtos.PeopleDto
 import com.ziola.alan.services.PersonService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -15,12 +15,12 @@ class PersonController(
     @GetMapping("/{name}")
     fun getPeopleByName(
         @PathVariable name: String,
-    ): People {
+    ): PeopleDto {
         return personService.findPeopleByName(name)
     }
 
     @GetMapping
-    fun getPeople(): People {
+    fun getPeople(): PeopleDto {
         return personService.findPeople()
     }
 }

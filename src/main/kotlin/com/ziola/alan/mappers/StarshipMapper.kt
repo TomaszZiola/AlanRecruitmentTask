@@ -2,7 +2,7 @@ package com.ziola.alan.mappers
 
 import com.ziola.alan.dtos.PersonDto
 import com.ziola.alan.dtos.StarshipWithPersonDto
-import com.ziola.alan.dtos.Starships
+import com.ziola.alan.dtos.StarshipsDto
 import com.ziola.alan.dtos.swapi.StarshipSwapiDto
 import com.ziola.alan.entities.Person
 import com.ziola.alan.entities.Starship
@@ -35,8 +35,8 @@ class StarshipMapper {
         )
     }
 
-    fun toDto(starships: List<Starship>): Starships {
-        return Starships(
+    fun toDto(starships: List<Starship>): StarshipsDto {
+        return StarshipsDto(
             starships.map {
                 StarshipWithPersonDto(
                     name = it.name,

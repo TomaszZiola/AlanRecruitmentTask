@@ -20,6 +20,6 @@ class StarshipMapperTest : BaseUnitTest() {
         val result = starshipMapperImpl.toDto(listOf(starship))
 
         // then
-        assertThat(result).isEqualTo(starships)
+        assertThat(result).isEqualTo(starshipsDto)
     }
 }

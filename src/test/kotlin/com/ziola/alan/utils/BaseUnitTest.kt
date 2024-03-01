@@ -2,20 +2,20 @@ package com.ziola.alan.utils
 
 import com.ziola.alan.controllers.PersonController
 import com.ziola.alan.controllers.StarshipController
-import com.ziola.alan.dtos.People
+import com.ziola.alan.dtos.PeopleDto
 import com.ziola.alan.dtos.PersonWithStarshipDto
 import com.ziola.alan.dtos.StarshipWithPersonDto
-import com.ziola.alan.dtos.Starships
+import com.ziola.alan.dtos.StarshipsDto
 import com.ziola.alan.dtos.swapi.PersonSwapiDto
 import com.ziola.alan.dtos.swapi.StarshipSwapiDto
 import com.ziola.alan.entities.Person
 import com.ziola.alan.entities.Starship
 import com.ziola.alan.mappers.PersonMapper
 import com.ziola.alan.mappers.StarshipMapper
-import com.ziola.alan.models.PeopleModel
+import com.ziola.alan.models.PeopleDtoModel
 import com.ziola.alan.models.PersonWithStarshipDtoModel
 import com.ziola.alan.models.StarshipWithPersonDtoModel
-import com.ziola.alan.models.StarshipsModel
+import com.ziola.alan.models.StarshipsDtoModel
 import com.ziola.alan.models.entity.PersonModel
 import com.ziola.alan.models.entity.StarshipModel
 import com.ziola.alan.models.swapi.PersonSwapiDtoModel
@@ -36,12 +36,12 @@ abstract class BaseUnitTest {
     private var starshipRepository = mockk<StarshipRepository>()
     private var starshipService = mockk<StarshipService>()
 
-    protected lateinit var people: People
+    protected lateinit var peopleDto: PeopleDto
     protected lateinit var person: Person
     protected lateinit var personSwapiDto: PersonSwapiDto
     protected lateinit var personWithStarshipDto: PersonWithStarshipDto
     protected lateinit var starship: Starship
-    protected lateinit var starships: Starships
+    protected lateinit var starshipsDto: StarshipsDto
     protected lateinit var starshipSwapiDto: StarshipSwapiDto
     protected lateinit var starshipWithPersonDto: StarshipWithPersonDto
 
@@ -54,12 +54,12 @@ abstract class BaseUnitTest {
 
     @BeforeEach
     fun mockResponses() {
-        people = PeopleModel.basic()
+        peopleDto = PeopleDtoModel.basic()
         person = PersonModel.basic()
         personSwapiDto = PersonSwapiDtoModel.baisc()
         personWithStarshipDto = PersonWithStarshipDtoModel.basic()
         starship = StarshipModel.basic(listOf(person))
-        starships = StarshipsModel.basic()
+        starshipsDto = StarshipsDtoModel.basic()
         starshipSwapiDto = StarshipSwapiDtoModel.basic()
         starshipWithPersonDto = StarshipWithPersonDtoModel.basic()
 
@@ -70,15 +70,15 @@ abstract class BaseUnitTest {
         starshipMapperImpl = StarshipMapper()
         starshipServiceImpl = StarshipService(starshipMapper, starshipRepository)
 
-        every { personMapper.toDto(listOf(person)) } returns people
+        every { personMapper.toDto(listOf(person)) } returns peopleDto
         every { personRepository.findAllByName("Luke Skywalker") } returns listOf(person)
         every { personRepository.findAll() } returns listOf(person)
-        every { personService.findPeople() } returns people
-        every { personService.findPeopleByName("Luke Skywalker") } returns people
-        every { starshipMapper.toDto(listOf(starship)) } returns starships
+        every { personService.findPeople() } returns peopleDto
+        every { personService.findPeopleByName("Luke Skywalker") } returns peopleDto
+        every { starshipMapper.toDto(listOf(starship)) } returns starshipsDto
         every { starshipRepository.findAllByName("X-wing") } returns listOf(starship)
         every { starshipRepository.findAll() } returns listOf(starship)
-        every { starshipService.findStarships() } returns starships
-        every { starshipService.findStarshipsByName("X-wing") } returns starships
+        every { starshipService.findStarships() } returns starshipsDto
+        every { starshipService.findStarshipsByName("X-wing") } returns starshipsDto
     }
 }
