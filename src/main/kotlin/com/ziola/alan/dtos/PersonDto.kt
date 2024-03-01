@@ -1,0 +1,16 @@
+package com.ziola.alan.dtos
+
+import java.time.ZonedDateTime
+
+data class PersonDto(
+    val name: String,
+    val height: String,
+    val mass: String,
+    val hairColor: String,
+    val skinColor: String,
+    val eyeColor: String,
+    val birthYear: String,
+    val gender: String,
+    val created: ZonedDateTime,
+    val edited: ZonedDateTime,
+)
