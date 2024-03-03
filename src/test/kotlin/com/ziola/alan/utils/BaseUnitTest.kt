@@ -3,8 +3,6 @@ package com.ziola.alan.utils
 import com.ziola.alan.controllers.PersonController
 import com.ziola.alan.controllers.StarshipController
 import com.ziola.alan.dtos.PeopleDto
-import com.ziola.alan.dtos.PersonWithStarshipDto
-import com.ziola.alan.dtos.StarshipWithPersonDto
 import com.ziola.alan.dtos.StarshipsDto
 import com.ziola.alan.dtos.swapi.PersonSwapiDto
 import com.ziola.alan.dtos.swapi.StarshipSwapiDto
@@ -13,8 +11,6 @@ import com.ziola.alan.entities.Starship
 import com.ziola.alan.mappers.PersonMapper
 import com.ziola.alan.mappers.StarshipMapper
 import com.ziola.alan.models.PeopleDtoModel
-import com.ziola.alan.models.PersonWithStarshipDtoModel
-import com.ziola.alan.models.StarshipWithPersonDtoModel
 import com.ziola.alan.models.StarshipsDtoModel
 import com.ziola.alan.models.entity.PersonModel
 import com.ziola.alan.models.entity.StarshipModel
@@ -32,18 +28,16 @@ abstract class BaseUnitTest {
     private var personMapper = mockk<PersonMapper>()
     private var personRepository = mockk<PersonRepository>()
     private var personService = mockk<PersonService>()
-    internal var starshipMapper = mockk<StarshipMapper>()
+    private var starshipMapper = mockk<StarshipMapper>()
     private var starshipRepository = mockk<StarshipRepository>()
     private var starshipService = mockk<StarshipService>()
 
     protected lateinit var peopleDto: PeopleDto
     protected lateinit var person: Person
     protected lateinit var personSwapiDto: PersonSwapiDto
-    protected lateinit var personWithStarshipDto: PersonWithStarshipDto
     protected lateinit var starship: Starship
     protected lateinit var starshipsDto: StarshipsDto
     protected lateinit var starshipSwapiDto: StarshipSwapiDto
-    protected lateinit var starshipWithPersonDto: StarshipWithPersonDto
 
     protected lateinit var personControllerImpl: PersonController
     protected lateinit var personMapperImpl: PersonMapper
@@ -57,11 +51,9 @@ abstract class BaseUnitTest {
         peopleDto = PeopleDtoModel.basic()
         person = PersonModel.basic()
         personSwapiDto = PersonSwapiDtoModel.baisc()
-        personWithStarshipDto = PersonWithStarshipDtoModel.basic()
         starship = StarshipModel.basic(listOf(person))
         starshipsDto = StarshipsDtoModel.basic()
         starshipSwapiDto = StarshipSwapiDtoModel.basic()
-        starshipWithPersonDto = StarshipWithPersonDtoModel.basic()
 
         personControllerImpl = PersonController(personService)
         personMapperImpl = PersonMapper()
