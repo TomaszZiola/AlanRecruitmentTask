@@ -56,26 +56,26 @@ class DataFetcher(
 
     private fun retrieveAllPeople(allPeople: MutableList<PersonSwapiDto>) {
         var personPage = STARTING_PAGE_PERSON
-        var hasNextPeople = true
+        var hasNext = true
 
-        while (hasNextPeople) {
+        while (hasNext) {
             val clientResponse = client.getPeopleFromPage(personPage)
             val currentPeople = clientResponse?.results ?: emptyList()
             allPeople.addAll(currentPeople)
-            hasNextPeople = clientResponse?.next?.isNotBlank() ?: false
+            hasNext = clientResponse?.next?.isNotBlank() ?: false
             personPage++
         }
     }
 
     private fun retrieveAllStarships(allStarships: MutableList<StarshipSwapiDto>) {
         var starshipPage = STARTING_PAGE_STARSHIP
-        var hasNextStarship = true
+        var hasNext = true
 
-        while (hasNextStarship) {
+        while (hasNext) {
             val clientResponse = client.getStarshipsFromPage(starshipPage)
             val currentStarships = clientResponse?.results ?: emptyList()
             allStarships.addAll(currentStarships)
-            hasNextStarship = clientResponse?.next?.isNotBlank() ?: false
+            hasNext = clientResponse?.next?.isNotBlank() ?: false
             starshipPage++
         }
     }
