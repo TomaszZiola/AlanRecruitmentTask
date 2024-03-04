@@ -25,12 +25,12 @@ import io.mockk.mockk
 import org.junit.jupiter.api.BeforeEach
 
 abstract class BaseUnitTest {
-    private var personMapper = mockk<PersonMapper>()
-    private var personRepository = mockk<PersonRepository>()
-    private var personService = mockk<PersonService>()
-    private var starshipMapper = mockk<StarshipMapper>()
-    private var starshipRepository = mockk<StarshipRepository>()
-    private var starshipService = mockk<StarshipService>()
+    var personMapper = mockk<PersonMapper>()
+    var personRepository = mockk<PersonRepository>()
+    var personService = mockk<PersonService>()
+    var starshipMapper = mockk<StarshipMapper>()
+    var starshipRepository = mockk<StarshipRepository>()
+    var starshipService = mockk<StarshipService>()
 
     protected lateinit var peopleDto: PeopleDto
     protected lateinit var person: Person

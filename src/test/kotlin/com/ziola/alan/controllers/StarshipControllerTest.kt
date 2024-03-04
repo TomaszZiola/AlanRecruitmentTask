@@ -1,6 +1,7 @@
 package com.ziola.alan.controllers
 
 import com.ziola.alan.utils.BaseUnitTest
+import io.mockk.verifySequence
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
@@ -12,6 +13,10 @@ internal class StarshipControllerTest : BaseUnitTest() {
 
         // then
         assertThat(result).isEqualTo(starshipsDto)
+
+        verifySequence {
+            starshipService.findStarshipsByName("X-wing")
+        }
     }
 
     @Test
@@ -21,5 +26,9 @@ internal class StarshipControllerTest : BaseUnitTest() {
 
         // then
         assertThat(result).isEqualTo(starshipsDto)
+
+        verifySequence {
+            starshipService.findStarships()
+        }
     }
 }
