@@ -26,12 +26,12 @@ internal abstract class BaseEndToEndTest : BaseIntegrationTest() {
 
     fun assert(
         result: ResponseBodyExtractionOptions,
-        expected: ObjectType?,
+        expected: ObjectType,
         classType: Class<*>,
     ) {
         val resultMapped =
             if (result.asString().isBlank()) result.asString() else objectMapper.readValue(result.asString(), classType)
-        val expectedMapped = if (expected == null) "" else objectMapper.readValue(expected.toString(), classType)
+        val expectedMapped = objectMapper.readValue(expected.toString(), classType)
 
         assertThat(resultMapped).isEqualTo(expectedMapped)
     }
