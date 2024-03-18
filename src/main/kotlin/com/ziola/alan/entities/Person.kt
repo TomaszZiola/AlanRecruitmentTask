@@ -4,14 +4,12 @@ import com.ziola.alan.entities.base.BaseEntity
 import jakarta.persistence.CascadeType.MERGE
 import jakarta.persistence.CascadeType.PERSIST
 import jakarta.persistence.Entity
-import jakarta.persistence.FetchType.EAGER
 import jakarta.persistence.Id
 import jakarta.persistence.JoinColumn
 import jakarta.persistence.JoinTable
 import jakarta.persistence.ManyToMany
 import jakarta.persistence.Table
 import java.time.ZonedDateTime
-import org.hibernate.annotations.BatchSize
 
 @Entity
 @Table(name = "person")

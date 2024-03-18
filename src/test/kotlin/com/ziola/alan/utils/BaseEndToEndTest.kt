@@ -49,7 +49,7 @@ internal abstract class BaseEndToEndTest : BaseIntegrationTest() {
         created: String = "2014-12-09T13:50:51.644000Z",
         edited: String = "2014-12-20T21:17:56.891000Z",
         url: String = "https://swapi.dev/api/people/1/",
-        starships: List<ObjectType> = emptyList(),
+        starships: Set<ObjectType> = emptySet(),
     ): ObjectType {
         return obj {
             "name" to name
@@ -84,7 +84,7 @@ internal abstract class BaseEndToEndTest : BaseIntegrationTest() {
         starshipClass: String = "Starfighter",
         created: String = "2014-12-12T11:19:05.340000Z",
         edited: String = "2014-12-20T21:23:49.886000Z",
-        people: List<ObjectType> = emptyList(),
+        people: Set<ObjectType> = emptySet(),
     ): ObjectType {
         return obj {
             "name" to name

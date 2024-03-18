@@ -38,7 +38,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                             arr[
                                 basicPeopleResponse(
                                     starships =
-                                        listOf(
+                                        setOf(
                                             basicStarshipResponse(),
                                             basicStarshipResponse(name = "Slave 1"),
                                         ),
@@ -49,7 +49,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                                 basicPeopleResponse(
                                     name = "Darth Vader",
                                     starships =
-                                        listOf(
+                                        setOf(
                                             basicStarshipResponse(name = "Slave 1"),
                                         ),
                                 ),
@@ -77,7 +77,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                             arr[
                                 basicPeopleResponse(
                                     starships =
-                                        listOf(
+                                        setOf(
                                             basicStarshipResponse(),
                                             basicStarshipResponse(name = "Slave 1"),
                                         ),
@@ -105,19 +105,19 @@ internal class IntegrationTest : BaseEndToEndTest() {
                         "starships" to
                             arr[
                                 basicStarshipResponse(
-                                    people = listOf(basicPeopleResponse()),
+                                    people = setOf(basicPeopleResponse()),
                                 ),
+                                basicStarshipResponse(name = "Star Destroyer"),
                                 basicStarshipResponse(
                                     name = "Slave 1",
                                     people =
-                                        listOf(
+                                        setOf(
                                             basicPeopleResponse(),
                                             basicPeopleResponse(
                                                 name = "Darth Vader",
                                             ),
                                         ),
                                 ),
-                                basicStarshipResponse(name = "Star Destroyer"),
                             ]
                     },
                 classType = StarshipsDto::class.java,
@@ -141,7 +141,7 @@ internal class IntegrationTest : BaseEndToEndTest() {
                         "starships" to
                             arr[
                                 basicStarshipResponse(
-                                    people = listOf(basicPeopleResponse()),
+                                    people = setOf(basicPeopleResponse()),
                                 ),
                             ]
                     },
