@@ -30,7 +30,7 @@ class Starship(
     val created: ZonedDateTime,
     val edited: ZonedDateTime,
 ) : BaseEntity<Long>() {
-    @ManyToMany(mappedBy = "starships", fetch = EAGER)
+    @ManyToMany(mappedBy = "starships")
     val people: MutableSet<Person> = mutableSetOf()
 
     override fun toString(): String {

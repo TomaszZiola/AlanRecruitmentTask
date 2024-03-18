@@ -11,6 +11,7 @@ import jakarta.persistence.JoinTable
 import jakarta.persistence.ManyToMany
 import jakarta.persistence.Table
 import java.time.ZonedDateTime
+import org.hibernate.annotations.BatchSize
 
 @Entity
 @Table(name = "person")
@@ -29,7 +30,7 @@ class Person(
     val created: ZonedDateTime,
     val edited: ZonedDateTime,
 ) : BaseEntity<Long>() {
-    @ManyToMany(cascade = [PERSIST, MERGE], fetch = EAGER)
+    @ManyToMany(cascade = [PERSIST, MERGE])
     @JoinTable(name = "person_starship", joinColumns = [JoinColumn(name = "person_id")], inverseJoinColumns = [JoinColumn(name = "starship_id")])
     val starships: MutableSet<Starship> = mutableSetOf()
 

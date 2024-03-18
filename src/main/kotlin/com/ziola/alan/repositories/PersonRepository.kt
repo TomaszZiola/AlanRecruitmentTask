@@ -2,9 +2,13 @@ package com.ziola.alan.repositories
 
 import com.ziola.alan.entities.Person
 import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.stereotype.Repository
+import org.springframework.data.jpa.repository.Query
+import org.springframework.data.repository.query.Param
 
-@Repository
 interface PersonRepository : JpaRepository<Person, Long> {
-    fun findAllByName(name: String): List<Person>
+    @Query("SELECT DISTINCT p FROM Person p JOIN FETCH p.starships WHERE p.name = :name")
+    fun findAllByName(@Param("name") name: String): List<Person>
+
+    @Query("SELECT DISTINCT p FROM Person p JOIN FETCH p.starships")
+    override fun findAll(): List<Person>
 }
